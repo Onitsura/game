@@ -13,10 +13,17 @@ public class Main {
 		war.buffForAttack();
 		war.attack(arch);
 		arch.attack(war);
-		
+		Main.winForHP(arch, war);
 		
 		
 	}
-
+	public static void winForHP(Human arch, Human war) {
+		if (arch.hp > war.hp) {
+			System.out.println(arch.name + " Win!");
+		}
+		else {
+			System.out.println(war.name + " Win!");
+		}
+	}
 
 }
