@@ -1,0 +1,49 @@
+
+package Game;
+
+
+    public class Human {
+        String name;
+        int attack = 25;
+        int hp = 100;
+        int heal = 15;
+
+        public void healUp(Human me) {
+            if (!me.isDead()) {
+                hp += heal;
+                System.out.println("You've been healed! Your HP now is :" + hp);
+            } else {
+                System.exit(0);
+            }
+        }
+
+        public void decreaseHp(int attack) {
+            hp -= attack;
+        }
+
+        public void attack(Human opponent) {
+            if (!opponent.isDead() | !this.isDead()) {
+                opponent.decreaseHp(attack);
+
+                System.out.println(opponent.name + "'ve been attacked! " + opponent.name + " have " + opponent.hp + " hp left.");
+                if (opponent.isDead() == true | this.isDead() == true) {
+                    System.exit(0);
+                }
+            } else {
+                System.exit(0);
+            }
+
+        }
+
+        public boolean isDead() {
+            if (this.hp <= 0) {
+                System.out.println(this.name + " is dead.");
+                System.out.println(this.name + " lose.");
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+    }
