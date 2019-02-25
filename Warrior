@@ -1,0 +1,27 @@
+package Game;
+
+import java.util.Random;
+
+public class Warrior extends Human {
+	
+	public Warrior(String name, int attack, int heal) {
+		this.name = name;
+		this.attack = attack;
+		this.heal = heal + 30;
+		this.hp = 140;
+		System.out.println("Warrior's name is: " +name);
+		
+	}
+
+	public void buffForAttack() {
+		if (!this.isDead()) {
+			Random buff = new Random();
+			attack += buff.nextInt(30);
+			System.out.println("You're attack power now is: "+attack);
+		}
+		else {
+			System.exit(0);
+		}
+		
+	}
+}
