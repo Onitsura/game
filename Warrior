@@ -14,14 +14,12 @@ public class Warrior extends Human {
 	}
 
 	public void buffForAttack() {
-		if (!this.isDead()) {
+			this.status();
 			Random buff = new Random();
 			attack += buff.nextInt(30);
 			System.out.println("You're attack power now is: "+attack);
-		}
-		else {
-			System.exit(0);
-		}
+		
+		
 		
 	}
 }
