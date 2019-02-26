@@ -5,26 +5,25 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Get ready for the next battle!");
-		Archer arch = new Archer("Archer", 70, 15);
-		Warrior war = new Warrior("Warrior", 80, 5 );
+		Archer archer = new Archer("Archer", 70, 15);
+		Warrior warrior = new Warrior("Warrior", 80, 5 );
 		
-		arch.attack(war);
-		war.healUp();
-		war.buffForAttack();
-		war.attack(arch);
-		arch.attack(war);
-		Main.winForHP(arch, war);
+		archer.attack(warrior);
+		warrior.healUp();
+		warrior.buffForAttack();
+		warrior.attack(archer);
+		archer.attack(warrior);
+		Main.winForHP(archer, warrior);
 		
 		
 	}
-	public static void winForHP(Human arch, Human war) {
-		if (arch.hp > war.hp) {
-			System.out.println(arch.name + " Win!");
+	public static void winForHP(Human archer, Human warrior) {
+		if (archer.hp > warrior.hp) {
+			System.out.println(archer.name + " Win!");
 		}
 		else {
-			System.out.println(war.name + " Win!");
+			System.out.println(warrior.name + " Win!");
 		}
 	}
 
 }
-
