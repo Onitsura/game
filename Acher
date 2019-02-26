@@ -24,55 +24,54 @@ import java.util.Random;
 
         @Override
         public void attack(Human opponent) {
-            if (!opponent.isDead() | !this.isDead()) {
-                if (Archer.doubleShoot() == true) {
-                    System.out.println("*doubleshoot*");
-                    if (arrows >= 2) {
-                        for (int i = 0; i < 2; i++) {
-                            if (!opponent.isDead() | !this.isDead()) {
-                                opponent.decreaseHp(attack);
-                                System.out.println(opponent.name + "'ve been attacked! " + opponent.name + " have " + opponent.hp + " hp left.");
-                                if (opponent.isDead() == true | this.isDead() == true) {
-                                    System.exit(0);
-                                }
-                            } else {
-                                System.exit(0);
-                            }
-
-                        }
-
-                    } else {
-                        System.out.println("You don't have enough arrows for double shoot.");
-                        if (arrows == 1) {
-                            if (!opponent.isDead() | !this.isDead()) {
-                                opponent.decreaseHp(attack);
-                                System.out.println(opponent.name + "'ve been attacked! " + opponent.name + " have " + opponent.hp + " hp left.");
-                                opponent.isDead();
-                            } else {
-                                System.exit(0);
-                            }
-                        } else {
-                            System.out.println("Sorry, but you must fight with your knife. Your attack is decreased for half.");
-                            this.attack = attack / 2;
-                            opponent.decreaseHp(attack);
-                            System.out.println(opponent.name + "'ve been attacked! " + opponent.name + " have " + opponent.hp + " hp left.");
-                            opponent.isDead();
-                        }
-                    }
+            this.status(opponent);
+            if (Archer.doubleShoot() == true) {
+                System.out.println("*doubleshoot*");
+                if (arrows >= 2) {
+                    this.haveTwoArrows(opponent);
                 } else {
-                    if (!opponent.isDead() | !this.isDead()) {
-                        opponent.decreaseHp(attack);
-                        System.out.println(opponent.name + "'ve been attacked!" + opponent.name + " have " + opponent.hp + " hp left.");
-                        opponent.isDead();
-                    } else {
-                        System.exit(0);
-                    }
-
+                    this.haveOneArrow(opponent);
                 }
+
+
             } else {
-                System.exit(0);
+                this.status(opponent);
+                opponent.decreaseHp(attack);
+                System.out.println(opponent.name + "'ve been attacked!" + opponent.name + " have " + opponent.hp + " hp left.");
+                this.status(opponent);
+
             }
         }
 
 
+        private void haveTwoArrows(Human opponent) {
+
+            for (int i = 0; i < 2; i++) {
+                opponent.decreaseHp(attack);
+                System.out.println(opponent.name + "'ve been attacked! " + opponent.name + " have " + opponent.hp + " hp left.");
+                this.status(opponent);
+            }
+
+        }
+
+        private void haveOneArrow(Human opponent) {
+            if (arrows == 1) {
+
+                System.out.println("You don't have enough arrows for double shoot.");
+                this.status(opponent);
+                opponent.decreaseHp(attack);
+                System.out.println(opponent.name + "'ve been attacked! " + opponent.name + " have " + opponent.hp + " hp left.");
+                this.status(opponent);
+            } else {
+                System.out.println("Sorry, but you must fight with your knife. Your attack is decreased for half.");
+                this.attack = attack / 2;
+                opponent.decreaseHp(attack);
+                System.out.println(opponent.name + "'ve been attacked! " + opponent.name + " have " + opponent.hp + " hp left.");
+                this.status(opponent);
+            }
+        }
+
     }
+
+
+
