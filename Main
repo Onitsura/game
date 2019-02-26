@@ -9,7 +9,7 @@ public class Main {
 		Warrior war = new Warrior("Warrior", 80, 5 );
 		
 		arch.attack(war);
-		war.healUp(war);
+		war.healUp();
 		war.buffForAttack();
 		war.attack(arch);
 		arch.attack(war);
@@ -27,3 +27,4 @@ public class Main {
 	}
 
 }
+
